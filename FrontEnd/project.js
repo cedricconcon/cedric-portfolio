@@ -1,13 +1,13 @@
 const projects = [
     {
-        image: "/assets/car-catalogue.png",
+        image: "assets/car-catalogue.png",
         title: "Car Catalogue",
         description: "React + Tailwind + Supabase + Auth + CRUD + Admin Dashboard + Price Sorting. Built & deployed in 2 days.",
         link: "https://car-catalogue-liard.vercel.app/",
         source: "https://github.com/cedricconcon/car-catalogue"
     },
     {
-        image: "/assets/Admin dashboard.png",
+        image: "assets/Admin dashboard.png",
         title: "Admin Dashboard",
         description: "Secure CRUD interface. Supabase Auth. Add, edit, and delete cars in real-time.",
         link: "https://car-catalogue-liard.vercel.app/admin",
