@@ -1,260 +1,512 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CED | Full-Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'JetBrains Mono', 'Inter', monospace;
-            background: #0a0a0a;
-            color: #e5e5e5;
+      body {
+        font-family: "JetBrains Mono", "Inter", monospace;
+        background: #0a0a0a;
+        color: #e5e5e5;
+      }
+      .glow-text {
+        color: #c9a96e;
+        text-shadow:
+          0 0 10px #c9a96e40,
+          0 0 20px #c9a96e20;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      }
+      .border-glow {
+        border: 1px solid #c9a96e40;
+        box-shadow: 0 0 15px #c9a96e10;
+      }
+      .border-glow:hover {
+        border-color: #c9a96e;
+        box-shadow: 0 0 30px #c9a96e30;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #333;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .dot.active {
+        background: #c9a96e;
+        box-shadow: 0 0 15px #c9a96e;
+      }
+      .slide.fade {
+        animation: fadeEffect 0.4s ease-in-out;
+      }
+      @keyframes fadeEffect {
+        from {
+          opacity: 0.3;
+          transform: scale(0.98);
         }
-        .glow-text {
-            color: #C9A96E;
-            text-shadow: 0 0 10px #C9A96E40, 0 0 20px #C9A96E20;
+        to {
+          opacity: 1;
+          transform: scale(1);
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      }
+      #home,
+      #about,
+      #skills,
+      #education,
+      #contact {
+        scroll-margin-top: 80px;
+      }
+      /* Terminal cursor blink */
+      .cursor-blink::after {
+        content: "█";
+        animation: blink 1s step-end infinite;
+        color: #c9a96e;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
-        .border-glow {
-            border: 1px solid #C9A96E40;
-            box-shadow: 0 0 15px #C9A96E10;
+        50% {
+          opacity: 0;
         }
-        .border-glow:hover {
-            border-color: #C9A96E;
-            box-shadow: 0 0 30px #C9A96E30;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .dot.active {
-            background: #C9A96E;
-            box-shadow: 0 0 15px #C9A96E;
-        }
-        .slide.fade {
-            animation: fadeEffect 0.4s ease-in-out;
-        }
-        @keyframes fadeEffect {
-            from { opacity: 0.3; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        #home, #about, #skills, #education, #contact {
-            scroll-margin-top: 80px;
-        }
-        /* Terminal cursor blink */
-        .cursor-blink::after {
-            content: '█';
-            animation: blink 1s step-end infinite;
-            color: #C9A96E;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+      }
     </style>
-</head>
-<body class="bg-slate-800 text-white">
-    <header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 glass-card border-b border-white/5">
-        <h1 class="text-2xl font-bold tracking-widest glow-text">CED</h1>
-        <nav id="mobile-nav" class="hidden md:flex flex-col md:flex-row absolute md:relative top-full md:top-auto left-0 right-0 bg-[#0a0a0a]/95 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 md:p-0 border-b border-white/5 md:border-none">
-        <ul class="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-sm font-medium text-gray-400">
-            <li><a class="hover:text-[#C9A96E] transition hover:glow-text" href="#home">[Home]</a></li>
-            <li><a class="hover:text-[#C9A96E] transition" href="#about">[About]</a></li>
-            <li><a class="hover:text-[#C9A96E] transition" href="#skills">[Skills]</a></li>
-            <li><a class="hover:text-[#C9A96E] transition" href="#education">[Education]</a></li>
-            <li><a class="hover:text-[#C9A96E] transition" href="#contact">[Contact]</a></li>
+  </head>
+  <body class="bg-slate-800 text-white">
+    <header
+      class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 glass-card border-b border-white/5"
+    >
+      <h1 class="text-2xl font-bold tracking-widest glow-text">CED</h1>
+      <nav
+        id="mobile-nav"
+        class="hidden md:flex flex-col md:flex-row absolute md:relative top-full md:top-auto left-0 right-0 bg-[#0a0a0a]/95 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 md:p-0 border-b border-white/5 md:border-none"
+      >
+        <ul
+          class="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-sm font-medium text-gray-400"
+        >
+          <li>
+            <a
+              class="hover:text-[#C9A96E] transition hover:glow-text"
+              href="#home"
+              >[Home]</a
+            >
+          </li>
+          <li>
+            <a class="hover:text-[#C9A96E] transition" href="#about">[About]</a>
+          </li>
+          <li>
+            <a class="hover:text-[#C9A96E] transition" href="#skills"
+              >[Skills]</a
+            >
+          </li>
+          <li>
+            <a class="hover:text-[#C9A96E] transition" href="#education"
+              >[Education]</a
+            >
+          </li>
+          <li>
+            <a class="hover:text-[#C9A96E] transition" href="#contact"
+              >[Contact]</a
+            >
+          </li>
         </ul>
-    </nav>
-        <div id="burger-btn" class="md:hidden text-2xl cursor-pointer hover:text-[#C9A96E] transition">🍔</div>
+      </nav>
+      <div
+        id="burger-btn"
+        class="md:hidden text-2xl cursor-pointer hover:text-[#C9A96E] transition"
+      >
+        ☰
+      </div>
     </header>
 
     <main>
-        <section class="min-h-screen flex flex-col md:flex-row justify-between items-center px-6 md:px-20 py-32 bg-[#0a0a0a]" id="home">
-            <div class="max-w-xl text-center md:text-left space-y-4">
-                <h5 class="text-gray-500 text-xs tracking-widest">// HELLO I'M</h5>
-                <h1 class="text-5xl md:text-6xl font-bold glow-text cursor-blink">CEDRIC CONCON</h1>
-                <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-[#C9A96E] pl-4"><span class="text-[#C9A96E]">Junior Full-Stack Developer</span> // React, Tailwind, Supabase <br>I build systems, ship fast, and break things (then fix them).</p>
-                <div class="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
-                    <a href="https://car-catalogue-liard.vercel.app/" target="_blank"><button class="border border-[#C9A96E] text-[#C9A96E] px-6 py-3 rounded-lg hover:bg-[#C9A96E] hover:text-black transition-all duration-300 font-bold">[View Work]</button></a>
-                <a href="/downloads-cv/Cedric concon Cv for tech.pdf" download><button class="bg-[#C9A96E] text-black px-6 py-3 rounded-lg hover:bg-white transition-all duration-300 font-bold"  id="download">[Download CV]</button></a>
-                </div>
-            </div>
-    <div class="w-56 h-56 rounded-full overflow-hidden border-4 border-[#C9A96E] shadow-[0_0_50px_#C9A96E30]">
-        <img
+      <section
+        class="min-h-screen flex flex-col md:flex-row justify-between items-center px-6 md:px-20 py-32 bg-[#0a0a0a]"
+        id="home"
+      >
+        <div class="max-w-xl text-center md:text-left space-y-4">
+          <h5 class="text-gray-500 text-xs tracking-widest">// HELLO I'M</h5>
+          <h1 class="text-5xl md:text-6xl font-bold glow-text cursor-blink">
+            CEDRIC CONCON
+          </h1>
+          <p
+            class="text-gray-400 text-sm leading-relaxed border-l-2 border-[#C9A96E] pl-4"
+          >
+            <span class="text-[#C9A96E]">Junior Full-Stack Developer</span> //
+            React, Tailwind, Supabase <br />I build systems, ship fast, and
+            break things (then fix them).
+          </p>
+          <div
+            class="flex flex-wrap gap-4 pt-4 justify-center md:justify-start"
+          >
+            <a href="https://car-catalogue-liard.vercel.app/" target="_blank"
+              ><button
+                class="border border-[#C9A96E] text-[#C9A96E] px-6 py-3 rounded-lg hover:bg-[#C9A96E] hover:text-black transition-all duration-300 font-bold"
+              >
+                [View Work]
+              </button></a
+            >
+            <a href="downloads/Cedric_CV.pdf" download
+              ><button
+                class="bg-[#C9A96E] text-black px-6 py-3 rounded-lg hover:bg-white transition-all duration-300 font-bold"
+                id="download"
+              >
+                [Download CV]
+              </button></a
+            >
+          </div>
+        </div>
+        <div
+          class="w-56 h-56 rounded-full overflow-hidden border-4 border-[#C9A96E] shadow-[0_0_50px_#C9A96E30]"
+        >
+          <img
             class="w-full h-full object-cover object-center scale-125"
             src="assets/formal_attire.png"
             alt="placehold"
-        >
-</div>
-        </section>
+          />
+        </div>
+      </section>
 
-       <section class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5" id="about">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-        <!-- LEFT COLUMN: About Text -->
-        <div class="space-y-4">
+      <section
+        class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5"
+        id="about"
+      >
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- LEFT COLUMN: About Text -->
+          <div class="space-y-4">
             <h5 class="text-[#C9A96E] text-xs tracking-widest">// ABOUT ME</h5>
             <h2 class="text-4xl font-bold text-white">Who is Ced?</h2>
             <p class="text-gray-400 leading-relaxed text-sm">
-                I'm a <span class="text-[#C9A96E]">Junior Full-Stack Developer</span> obsessed with turning ideas into working software. My stack is React, Tailwind, and Supabase—but I treat them as tools, not religions.
+              I'm a
+              <span class="text-[#C9A96E]">Junior Full-Stack Developer</span>
+              obsessed with turning ideas into working software. My stack is
+              React, Tailwind, and Supabase—but I treat them as tools, not
+              religions.
             </p>
             <p class="text-gray-400 leading-relaxed text-sm">
-                I built a live car catalogue with authentication, CRUD, and an admin dashboard. I'm currently looking for remote opportunities in the Philippines where I can contribute and grow.
+              I built a live car catalogue with authentication, CRUD, and an
+              admin dashboard. I'm currently looking for remote opportunities in
+              the Philippines where I can contribute and grow.
             </p>
             <div class="flex flex-wrap gap-3">
-                <span class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full">React</span>
-                <span class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full">Supabase</span>
-                <span class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full">Tailwind</span>
+              <span
+                class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full"
+                >React</span
+              >
+              <span
+                class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full"
+                >Supabase</span
+              >
+              <span
+                class="border border-[#C9A96E]/20 text-[#C9A96E] text-xs px-4 py-2 rounded-full"
+                >Tailwind</span
+              >
             </div>
-        </div>
+          </div>
 
-        <!-- RIGHT COLUMN: Info Card -->
-        <div class="glass-card p-6 rounded-2xl space-y-3 border-glow">
+          <!-- RIGHT COLUMN: Info Card -->
+          <div class="glass-card p-6 rounded-2xl space-y-3 border-glow">
             <div class="flex justify-between border-b border-white/5 py-2">
-                <span class="text-gray-500 text-sm">● NAME</span>
-                <span class="text-white text-sm">Cedric Concon</span>
+              <span class="text-gray-500 text-sm">● NAME</span>
+              <span class="text-white text-sm">Cedric Concon</span>
             </div>
             <div class="flex justify-between border-b border-white/5 py-2">
-                <span class="text-gray-500 text-sm">● ROLE</span>
-                <span class="text-white text-sm">Junior Full-Stack</span>
+              <span class="text-gray-500 text-sm">● ROLE</span>
+              <span class="text-white text-sm">Junior Full-Stack</span>
             </div>
             <div class="flex justify-between border-b border-white/5 py-2">
-                <span class="text-gray-500 text-sm">● LOCATION</span>
-                <span class="text-white text-sm">Quezon City, PH</span>
+              <span class="text-gray-500 text-sm">● LOCATION</span>
+              <span class="text-white text-sm">Quezon City, PH</span>
             </div>
             <div class="flex justify-between border-b border-white/5 py-2">
-                <span class="text-gray-500 text-sm">● EMAIL</span>
-                <span class="text-white text-sm">conconcedric@gmail.com</span>
+              <span class="text-gray-500 text-sm">● EMAIL</span>
+              <span class="text-white text-sm">conconcedric@gmail.com</span>
             </div>
             <div class="flex justify-between py-2">
-                <span class="text-gray-500 text-sm">● STATUS</span>
-                <span class="text-green-400 text-sm flex items-center">
-                    <span class="w-2 h-2 bg-green-400 rounded-full inline-block mr-2 shadow-[0_0_10px_green]"></span>
-                    OPEN TO WORK
-                </span>
+              <span class="text-gray-500 text-sm">● STATUS</span>
+              <span class="text-green-400 text-sm flex items-center">
+                <span
+                  class="w-2 h-2 bg-green-400 rounded-full inline-block mr-2 shadow-[0_0_10px_green]"
+                ></span>
+                OPEN TO WORK
+              </span>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
-        <section id="skills" class="bg-[#0a0a0a] py-20 px-6 md:px-20">
-            <div class="max-w-6xl mx-auto">
-                <h5 class="text-[#C9A96E] text-xs tracking-widest">// SKILL MATRIX</h5>
-                <h2 class="text-4xl font-bold text-white mb-12">Tech Stack</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition">
-                        <h4 class="text-[#C9A96E] font-bold text-lg mb-4"> Frontend</h4>
-                        <p class="text-gray-300 text-sm">React · Tailwind · JavaScript</p>
-                        <p class="text-gray-500 text-xs mt-2">Responsive · SPA · Hooks</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition">
-                        <h4 class="text-[#C9A96E] font-bold text-lg mb-4"> Backend</h4>
-                        <p class="text-gray-300 text-sm">Supabase · PostgreSQL</p>
-                        <p class="text-gray-500 text-xs mt-2">Auth · RLS · Realtime</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition">
-                        <h4 class="text-[#C9A96E] font-bold text-lg mb-4"> Deployment</h4>
-                        <p class="text-gray-300 text-sm">Git · GitHub · Vercel</p>
-                        <p class="text-gray-500 text-xs mt-2">CI/CD · Live Shipping</p>
-                    </div>
-                </div>
+      <section id="skills" class="bg-[#0a0a0a] py-20 px-6 md:px-20">
+        <div class="max-w-6xl mx-auto">
+          <h5 class="text-[#C9A96E] text-xs tracking-widest">
+            // SKILL MATRIX
+          </h5>
+          <h2 class="text-4xl font-bold text-white mb-12">Tech Stack</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition"
+            >
+              <h4 class="text-[#C9A96E] font-bold text-lg mb-4">Frontend</h4>
+              <p class="text-gray-300 text-sm">React · Tailwind · JavaScript</p>
+              <p class="text-gray-500 text-xs mt-2">Responsive · SPA · Hooks</p>
             </div>
-        </section>
+            <div
+              class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition"
+            >
+              <h4 class="text-[#C9A96E] font-bold text-lg mb-4">Backend</h4>
+              <p class="text-gray-300 text-sm">Supabase · PostgreSQL</p>
+              <p class="text-gray-500 text-xs mt-2">Auth · RLS · Realtime</p>
+            </div>
+            <div
+              class="glass-card p-6 rounded-2xl text-center border-glow hover:border-[#C9A96E] transition"
+            >
+              <h4 class="text-[#C9A96E] font-bold text-lg mb-4">Deployment</h4>
+              <p class="text-gray-300 text-sm">Git · GitHub · Vercel</p>
+              <p class="text-gray-500 text-xs mt-2">CI/CD · Live Shipping</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section id="education" class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5">
-            <div class="max-w-4xl mx-auto">
-                <h5 class="text-[#C9A96E] text-xs tracking-widest">// BACKGROUND</h5>
-                <h2 class="text-4xl font-bold text-white mb-12">Education</h2>
-                <div class="space-y-4">
-                    <div class="glass-card p-6 rounded-2xl border-glow">
-                        <h3 class="text-xl font-bold text-white">Data & Privacy Security</h3>
-                        <h4 class="text-[#C9A96E] text-sm">DICT Webinar</h4>
-                        <p class="text-gray-500 text-xs">Online Zoom</p>
-                        <p class="text-gray-400 text-sm mt-2">Certificate · Data Protection</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-glow">
-                        <h3 class="text-xl font-bold text-white">Vibe Coding & AI Workshop</h3>
-                        <h4 class="text-[#C9A96E] text-sm">DICT Webinar</h4>
-                        <p class="text-gray-500 text-xs">Online Zoom</p>
-                        <p class="text-gray-400 text-sm mt-2">Certificate · AI-Assisted Development</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-glow">
-                        <h3 class="text-xl font-bold text-white">ICT · Senior High School</h3>
-                        <h4 class="text-[#C9A96E] text-sm">Bestlink College of the Philippines</h4>
-                        <p class="text-gray-500 text-xs">2023-2025</p>
-                        <p class="text-gray-400 text-sm mt-2">Graduated · Research Club Member</p>
-                    </div>
-                </div>
+      <section
+        id="education"
+        class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h5 class="text-[#C9A96E] text-xs tracking-widest">// BACKGROUND</h5>
+          <h2 class="text-4xl font-bold text-white mb-12">Education</h2>
+          <div class="space-y-4">
+            <div class="glass-card p-6 rounded-2xl border-glow">
+              <h3 class="text-xl font-bold text-white">
+                Data Privacy Awareness
+              </h3>
+              <h4 class="text-[#C9A96E] text-sm">DICT Information Session</h4>
+              <p class="text-gray-500 text-xs">Online Zoom</p>
+              <p class="text-gray-400 text-sm mt-2">
+                Certificate of Attendance · November 2025
+              </p>
             </div>
-        </section>
-        <section class="bg-[#0a0a0a] py-20 px-6 md:px-20">
-            <div class="max-w-5xl mx-auto text-center">
-                <h5 class="text-[#C9A96E] text-xs tracking-widest">// PORTFOLIO</h5>
-                <h2 class="text-4xl font-bold text-white mb-12">Featured Projects</h2>
-                <div class="glass-card p-6 md:p-10 rounded-3xl border-glow">
-                    <div class="slide flex flex-col md:flex-row gap-6 items-center">
-                        <img id="slide-image" src="" alt="Project" class="w-full md:w-1/2 h-64 object-cover rounded-2xl border border-white/10">
-                        <div class="text-left md:w-1/2 space-y-4">
-                            <h3 id="slide-title" class="text-2xl font-bold text-[#C9A96E]">Project</h3>
-                            <p id="slide-desc" class="text-gray-400 text-sm leading-relaxed">Description</p>
-                            <div class="flex gap-4">
-                                <a id="link" href="#" target="_blank" class="bg-[#C9A96E] text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-white transition">[View]</a>
-                                <a id="source" href="#" target="_blank" class="border border-white/20 text-white px-4 py-2 rounded-lg text-sm hover:bg-white hover:text-black transition">[Source]</a>
-                            </div>
-                            <p id="slide-counter" class="text-gray-600 text-xs">1 / 3</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center mt-8">
-                        <button id="prev-btn" class="bg-white/5 text-white px-6 py-2 rounded-full hover:bg-[#C9A96E] hover:text-black transition text-xl">❮</button>
-                        <div id="dots" class="flex gap-3"></div>
-                        <button id="next-btn" class="bg-white/5 text-white px-6 py-2 rounded-full hover:bg-[#C9A96E] hover:text-black transition text-xl">❯</button>
-                    </div>
-                </div>
+            <div class="glass-card p-6 rounded-2xl border-glow">
+              <h3 class="text-xl font-bold text-white">
+                Learning the Basics of VIBE Coding
+              </h3>
+              <h4 class="text-[#C9A96E] text-sm">DICT Information Session</h4>
+              <p class="text-gray-500 text-xs">Online Zoom</p>
+              <p class="text-gray-400 text-sm mt-2">
+                Certificate of Attendance · November 2025
+              </p>
             </div>
-        </section>
+            <div class="glass-card p-6 rounded-2xl border-glow">
+              <h3 class="text-xl font-bold text-white">
+                ICT · Senior High School
+              </h3>
+              <h4 class="text-[#C9A96E] text-sm">
+                Bestlink College of the Philippines
+              </h4>
+              <p class="text-gray-500 text-xs">2023-2025</p>
+              <p class="text-gray-400 text-sm mt-2">
+                Graduated · Research Club Member
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-[#0a0a0a] py-20 px-6 md:px-20">
+        <div class="max-w-5xl mx-auto text-center">
+          <h5 class="text-[#C9A96E] text-xs tracking-widest">// PORTFOLIO</h5>
+          <h2 class="text-4xl font-bold text-white mb-12">Featured Projects</h2>
+          <div class="glass-card p-6 md:p-10 rounded-3xl border-glow">
+            <div class="slide flex flex-col md:flex-row gap-6 items-center">
+              <img
+                id="slide-image"
+                src=""
+                alt="Project"
+                class="w-full md:w-1/2 h-64 object-cover rounded-2xl border border-white/10"
+              />
+              <div class="text-left md:w-1/2 space-y-4">
+                <h3 id="slide-title" class="text-2xl font-bold text-[#C9A96E]">
+                  Project
+                </h3>
+                <p
+                  id="slide-desc"
+                  class="text-gray-400 text-sm leading-relaxed"
+                >
+                  Description
+                </p>
+                <div class="flex gap-4">
+                  <a
+                    id="link"
+                    href="#"
+                    target="_blank"
+                    class="bg-[#C9A96E] text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-white transition"
+                    >[View]</a
+                  >
+                  <a
+                    id="source"
+                    href="#"
+                    target="_blank"
+                    class="border border-white/20 text-white px-4 py-2 rounded-lg text-sm hover:bg-white hover:text-black transition"
+                    >[Source]</a
+                  >
+                </div>
+                <p id="slide-counter" class="text-gray-600 text-xs">1 / 3</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center mt-8">
+              <button
+                id="prev-btn"
+                class="bg-white/5 text-white px-6 py-2 rounded-full hover:bg-[#C9A96E] hover:text-black transition text-xl"
+              >
+                ❮
+              </button>
+              <div id="dots" class="flex gap-3"></div>
+              <button
+                id="next-btn"
+                class="bg-white/5 text-white px-6 py-2 rounded-full hover:bg-[#C9A96E] hover:text-black transition text-xl"
+              >
+                ❯
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section id="contact" class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <h5 class="text-[#C9A96E] text-xs tracking-widest">// CONNECT</h5>
-                    <h2 class="text-4xl font-bold text-white">Reach Out</h2>
-                    <p class="text-gray-400 text-sm">Open for collaboration, freelance, or just a chat.</p>
-                    <div class="space-y-3">
-                        <div class="glass-card p-4 rounded-xl border-glow flex items-center gap-4"><span class="text-[#C9A96E]">✉️</span><span class="text-sm">conconcedric@gmail.com</span></div>
-                        <a href="https://github.com/cedricconcon" target="_blank" class="glass-card p-4 rounded-xl border-glow flex items-center gap-4 hover:border-[#C9A96E] transition"><span class="text-[#C9A96E]">🖥️</span><span class="text-sm">github.com/cedricconcon</span></a>
-                        <a href="https://web.facebook.com/profile.php?id=61589404193056" target="_blank" class="glass-card p-4 rounded-xl border-glow flex items-center gap-4 hover:border-[#C9A96E] transition"><span class="text-[#C9A96E]">📘</span><span class="text-sm">Facebook</span></a>
-                    </div>
-                </div>
-                <div class="glass-card p-8 rounded-2xl border-glow">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-                        <input type="hidden" name="access_key" value="034dbc02-a4f4-4a29-b0c7-e719a645695c">
-                        <input type="text" name="name" placeholder="[ Your Name ]" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition">
-                        <input type="email" name="email" placeholder="[ Email ]" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition">
-                        <textarea rows="5" name="message" placeholder="[ Message ]" class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition resize-none"></textarea>
-                        <button type="submit" class="w-full bg-[#C9A96E] text-black py-3 rounded-lg font-bold hover:bg-white transition">[ SEND ]</button>
-                    </form>
-                </div>
+      <section
+        id="contact"
+        class="bg-[#111111] py-20 px-6 md:px-20 border-t border-white/5"
+      >
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="space-y-6">
+            <h5 class="text-[#C9A96E] text-xs tracking-widest">// CONNECT</h5>
+            <h2 class="text-4xl font-bold text-white">Reach Out</h2>
+            <p class="text-gray-400 text-sm">
+              Open for collaboration, freelance, or just a chat.
+            </p>
+            <div class="space-y-3">
+              <div
+                class="glass-card p-4 rounded-xl border-glow flex items-center gap-4"
+              >
+                <svg
+                  class="text-[#C9A96E]"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span class="text-sm">conconcedric@gmail.com</span>
+              </div>
+              <a
+                href="https://github.com/cedricconcon"
+                target="_blank"
+                class="glass-card p-4 rounded-xl border-glow flex items-center gap-4 hover:border-[#C9A96E] transition"
+              >
+                <svg
+                  class="text-[#C9A96E]"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.93 0-1.31.465-2.385 1.23-3.225-.12-.3-.54-1.523.12-3.176 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.653.24 2.876.12 3.176.765.84 1.23 1.905 1.23 3.225 0 4.61-2.805 5.63-5.475 5.93.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"
+                  />
+                </svg>
+                <span class="text-sm">github.com/cedricconcon</span>
+              </a>
+              <a
+                href="https://web.facebook.com/profile.php?id=61589404193056"
+                target="_blank"
+                class="glass-card p-4 rounded-xl border-glow flex items-center gap-4 hover:border-[#C9A96E] transition"
+              >
+                <svg
+                  class="text-[#C9A96E]"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+                <span class="text-sm">Facebook</span>
+              </a>
             </div>
-        </section>
+          </div>
+          <div class="glass-card p-8 rounded-2xl border-glow">
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="space-y-4"
+            >
+              <input
+                type="hidden"
+                name="access_key"
+                value="034dbc02-a4f4-4a29-b0c7-e719a645695c"
+              />
+              <input
+                type="text"
+                name="name"
+                placeholder="[ Your Name ]"
+                required
+                class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="[ Email ]"
+                required
+                class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition"
+              />
+              <textarea
+                rows="5"
+                name="message"
+                placeholder="[ Message ]"
+                class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-[#C9A96E] outline-none transition resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                class="w-full bg-[#C9A96E] text-black py-3 rounded-lg font-bold hover:bg-white transition"
+              >
+                [ SEND ]
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
-     <footer class="bg-[#0a0a0a] border-t border-white/5 text-gray-600 text-xs py-6 px-6 flex flex-col md:flex-row justify-between items-center gap-2">
-        <p>© 2026 Cedric Concon // Built with <span class="text-[#C9A96E]">🔥</span> & <span class="text-[#C9A96E]">☕</span></p>
-        <p>Quezon City, Philippines</p>
+    <footer
+      class="bg-[#0a0a0a] border-t border-white/5 text-gray-600 text-xs py-6 px-6 flex flex-col md:flex-row justify-between items-center gap-2"
+    >
+      <p>
+        © 2026 Cedric Concon // Built with
+        <span class="text-[#C9A96E]">passion</span> and
+        <span class="text-[#C9A96E]">determination</span>
+      </p>
+      <p>Quezon City, Philippines</p>
     </footer>
 
-
     <script src="project.js"></script>
-
-</body>
+  </body>
 </html>
