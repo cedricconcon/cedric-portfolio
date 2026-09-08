@@ -13,6 +13,13 @@ const projects = [
         link: "https://car-catalogue-liard.vercel.app/admin",
         source: "https://github.com/cedricconcon/car-catalogue"
     },
+    {
+        image: "assets/Community_Reports.png",
+        title: "Landing Page",
+        description: "CommunityWatch — a full-stack community issue-reporting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, CRUD-based report management, and an admin dashboard for moderating and resolving submissions.",
+        link: "https://community-report-system-git-main-cedric-dev1.vercel.app/",
+        source: "https://github.com/cedricconcon/community-report-system"
+    },
     // Add a third placeholder
     {
         image: "/project-picture/coming-soon.png",
