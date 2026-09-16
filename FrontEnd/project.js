@@ -2,23 +2,30 @@ const projects = [
     {
         image: "assets/car-catalogue.png",
         title: "Car Catalogue",
-        description: "React + Tailwind + Supabase + Auth + CRUD + Admin Dashboard + Price Sorting. Built & deployed in 2 days.",
+        description: "A full-stack automotive marketplace built with React and Tailwind CSS, backed by Supabase for real-time data and authentication. Features a searchable car inventory with brand and price filters, curated featured listings, and a protected admin panel for full CRUD management designed, built, and deployed in just 2 days.",
         link: "https://car-catalogue-liard.vercel.app/",
         source: "https://github.com/cedricconcon/car-catalogue"
     },
     {
         image: "assets/Admin dashboard.png",
         title: "Admin Dashboard",
-        description: "Secure CRUD interface. Supabase Auth. Add, edit, and delete cars in real-time.",
+        description: "The secure control panel behind the Car Catalogue app. Protected by Supabase Auth, it gives admins full real-time CRUD access — add new listings, update car details and pricing, or remove entries instantly through a clean, responsive interface",
         link: "https://car-catalogue-liard.vercel.app/admin",
         source: "https://github.com/cedricconcon/car-catalogue"
     },
     {
         image: "assets/Community_Reports.png",
-        title: "Landing Page",
-        description: "CommunityWatch — a full-stack community issue-reporting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, CRUD-based report management, and an admin dashboard for moderating and resolving submissions.",
+        title: "Community Watch",
+        description: "A full-stack civic reporting platform where residents can flag local issues directly to administrators. Built with React, Tailwind CSS, and Supabase, it features role-based access for residents and admins, real-time report submission and tracking, and a moderation dashboard for reviewing and resolving community submissions.",
         link: "https://community-report-system-git-main-cedric-dev1.vercel.app/",
         source: "https://github.com/cedricconcon/community-report-system"
+    },
+    {
+        image: "assets/Booking-System-Form.png",
+        title: "Appointment Booking Page",
+        description: "A clean, responsive appointment booking page for service-based businesses. Clients can enter their details, choose a service, and pick a date all through a minimal, mobile-friendly form designed for fast conversions and easy integration.",
+        link: "https://booking-system-kphtl3xpg-cedric-dev1.vercel.app/",
+        source: "https://github.com/cedricconcon/booking-system#booking-system"
     },
     // Add a third placeholder
     {
