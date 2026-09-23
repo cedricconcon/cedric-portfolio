@@ -27,7 +27,13 @@ const projects = [
         link: "https://booking-system-kphtl3xpg-cedric-dev1.vercel.app/",
         source: "https://github.com/cedricconcon/booking-system#booking-system"
     },
-    // Add a third placeholder
+    {
+        image: "assets/Food-ecommerce.png",
+        title: "CraveTable Food E Commerce",
+        description: "A full stack food ordering web application built with React and Firebase. Customers can browse food, drinks, snacks, and desserts, create an account, and place orders directly from the platform. Features a fully functional admin dashboard where administrators can add, edit, and delete products, and manage order statuses in real time.",
+        link: "https://cravetable-wvs7-git-main-cedric-dev1.vercel.app",
+        source: "https://github.com/cedricconcon/cravetable"
+    },
     {
         image: "/project-picture/coming-soon.png",
         title: "Next Project",
